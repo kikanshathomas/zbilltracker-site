@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zombie Bill Tracker | Download</title>
+<meta name="description" content="Download Zombie Bill Tracker on Google Play. On a computer? Scan the QR code with your phone camera to open it on your phone.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:image" content="https://zbilltracker.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zbilltracker.com/assets/img/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0e10; --bg-soft:#1a1a1d; --card:#1a1a1d;
+    --line:#2a2a2e; --line2:#3a3a40;
+    --text:#f0f0f2; --text-dim:#9a9aa0; --text-faint:#7a7a80;
+    --sans:'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --r:4px; --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--sans); font-weight:300;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    text-transform:uppercase; letter-spacing:0.02em; overflow-x:hidden;
+    min-height:100vh; display:flex; flex-direction:column;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px; width:100%}
+  h1{font-family:var(--sans); font-weight:800; letter-spacing:-0.03em; line-height:1.06}
+  .eyebrow{font-size:11px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint)}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:50; background:rgba(14,14,16,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; max-width:var(--maxw); margin:0 auto; padding:15px 24px}
+  .brand{font-size:18px; font-weight:700; letter-spacing:-0.02em; color:var(--text)}
+  .brand b{color:var(--text-dim); font-weight:400}
+  .nav-r{display:flex; align-items:center; gap:26px}
+  .nav-r a{font-size:13px; font-weight:500; color:var(--text-dim); transition:.15s}
+  .nav-r a:hover{color:var(--text)}
+  /* hamburger toggle — hidden on desktop, shown under 860px */
+  .nav-toggle{display:none; flex-direction:column; justify-content:center; align-items:center; gap:4px; width:40px; height:40px; padding:0; background:transparent; border:1px solid var(--line2); border-radius:var(--r); cursor:pointer; -webkit-tap-highlight-color:transparent}
+  .nav-toggle span{display:block; width:17px; height:1.5px; background:var(--text); transition:transform .22s ease, opacity .22s ease}
+  .nav-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  /* download section */
+  .dl{flex:1; display:flex; align-items:center; padding:clamp(48px,8vw,96px) 0; text-align:center}
+  .dl .eyebrow{display:inline-block; margin-bottom:18px}
+  .app-icon{border-radius:22%; border:1px solid var(--line); box-shadow:0 10px 34px rgba(0,0,0,.45)}
+  .dl h1{font-size:clamp(34px,5.5vw,60px); max-width:16ch; margin:0 auto}
+  .dl .sub{font-size:clamp(15px,1.6vw,18px); font-weight:300; color:var(--text-dim); max-width:30em; margin:20px auto 0; letter-spacing:.01em}
+
+  .qr-card{
+    background:#fff; border-radius:10px; padding:18px; display:inline-block; line-height:0;
+    box-shadow:0 24px 60px -28px rgba(0,0,0,.85); margin:clamp(32px,5vw,48px) auto 0;
+  }
+  #qr{width:206px; height:206px}
+  #qr img, #qr canvas{display:block; width:206px !important; height:206px !important}
+  .qr-cap{font-size:11px; font-weight:600; letter-spacing:.14em; color:var(--text-faint); margin-top:16px}
+
+  .dl-or{display:flex; align-items:center; gap:14px; justify-content:center; margin:26px auto 22px; max-width:240px; color:var(--text-faint); font-size:11px; font-weight:600; letter-spacing:.16em}
+  .dl-or::before,.dl-or::after{content:""; height:1px; flex:1; background:var(--line)}
+
+  .gp-badge{display:inline-block; transition:opacity .15s}
+  .gp-badge:hover{opacity:.85}
+  .gp-badge img{height:56px; width:auto; display:block; margin:0 auto}
+
+  .trust-strip{display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:28px; font-size:11px; font-weight:500; letter-spacing:.1em; color:var(--text-faint)}
+  .trust-strip span{display:inline-flex; align-items:center; gap:7px}
+  .trust-strip span::before{content:""; width:4px; height:4px; border-radius:50%; background:var(--text-faint)}
+
+  /* footer */
+  footer{padding:54px 0 38px; border-top:1px solid var(--line)}
+  .foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px}
+  .foot-brand .brand{font-size:18px}
+  .foot-brand p{color:var(--text-dim); font-weight:300; font-size:12px; margin-top:14px; max-width:24em; letter-spacing:.02em}
+  .foot-col h4{font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint); margin-bottom:14px}
+  .foot-col a{display:block; color:var(--text-dim); font-size:13px; font-weight:400; padding:5px 0; transition:.15s}
+  .foot-col a:hover{color:var(--text)}
+  @media(max-width:860px){ .foot-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .foot-grid{grid-template-columns:1fr} }
+  .foot-legal{border-top:1px solid var(--line); margin-top:38px; padding-top:22px; font-size:11px; color:var(--text-faint); line-height:1.7; text-transform:uppercase; letter-spacing:0.04em}
+  .foot-legal a{color:var(--text-dim); text-decoration:underline; text-decoration-color:var(--line2); text-underline-offset:2px}
+  .foot-legal a:hover{color:var(--text)}
+
+  @media(max-width:860px){
+    .nav-toggle{display:flex}
+    .nav-r{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      background:rgba(14,14,16,.98); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; transition:max-height .28s ease;
+    }
+    .nav-r.open{max-height:340px}
+    .nav-r a{padding:15px 24px; font-size:14px; color:var(--text); border-top:1px solid var(--line)}
+    .nav-r a:first-child{border-top:0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/">CAMP<b> · LOG</b></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-r" id="navMenu">
+      <a href="/#features">Features</a>
+      <a href="/#benefits">Why it's different</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+    </div>
+  </div>
+</nav>
+
+<section class="dl">
+  <div class="wrap">
+    <img class="app-icon" src="/assets/img/app-icon.png" alt="Zombie Bill Tracker app icon" width="104" height="104" style="display:block;margin:0 auto 20px">
+    <span class="eyebrow">Download</span>
+    <h1>Get Zombie Bill Tracker.</h1>
+    <p class="sub">On your phone? Tap the badge below. On a computer? Point your phone camera at the code to open it on your phone.</p>
+
+    <div class="qr-card"><div id="qr" role="img" aria-label="QR code to the Google Play listing"></div></div>
+    <div class="qr-cap">Scan with your phone camera</div>
+
+    <div class="dl-or">Or</div>
+
+    <!-- Official Google Play badge — links to the Play listing. Asset at assets/img/google-play-badge.png -->
+    <a class="gp-badge" href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener"><img src="assets/img/google-play-badge.png" alt="Get it on Google Play" height="56"></a>
+
+    <div class="trust-strip"><span>$3.99 · one-time</span><span>No subscription</span><span>No account</span></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/">CAMP<b> · LOG</b></a>
+        <p>The bill tracker you'll actually open. Pay your bills, keep your camp alive.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="/#features">Features</a>
+        <a href="/#benefits">Why it's different</a>
+        <a href="/#reviews">Reviews</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@zbilltracker.com">Support</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get the app</h4>
+        <a href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener">Google Play</a>
+        <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+      </div>
+    </div>
+    <p class="foot-legal">
+      Zombie Bill Tracker is a bill-tracking app and does not provide financial advice.
+      Google Play and the Google Play logo are trademarks of Google LLC.<br>© <span id="cpyear">2026</span> <a href="https://ubersoft.pro" target="_blank" rel="noopener">Ubersoft</a>. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<!-- QR generated client-side; falls back to a plain link if the library can't load -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  (function(){
+    var url = "https://play.google.com/store/apps/details?id=com.zbilltracker.app";
+    var el = document.getElementById('qr');
+    try{
+      if (typeof QRCode === 'undefined') throw new Error('qr lib unavailable');
+      new QRCode(el, { text:url, width:206, height:206, colorDark:'#0e0e10', colorLight:'#ffffff', correctLevel: QRCode.CorrectLevel.M });
+    }catch(e){
+      el.style.width='auto'; el.style.height='auto';
+      el.innerHTML = '<div style="font:600 12px/1.6 sans-serif;color:#0e0e10;max-width:206px;text-align:center;text-transform:none;letter-spacing:0">Open on your phone:<br><a href="'+url+'" target="_blank" rel="noopener" style="color:#0e0e10;word-break:break-all">play.google.com/store/apps/details?id=com.zbilltracker.app</a></div>';
+    }
+  })();
+</script>
+  <script>
+  // Mobile nav: hamburger toggle for the collapsible menu.
+  (function(){
+    var t=document.getElementById('navToggle'), m=document.getElementById('navMenu');
+    if(!t||!m) return;
+    function close(){t.classList.remove('open');m.classList.remove('open');t.setAttribute('aria-expanded','false');}
+    t.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open=m.classList.toggle('open');
+      t.classList.toggle('open', open);
+      t.setAttribute('aria-expanded', open?'true':'false');
+    });
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click', close);});
+    document.addEventListener('click', function(e){
+      if(m.classList.contains('open') && !m.contains(e.target) && !t.contains(e.target)) close();
+    });
+    window.addEventListener('resize', function(){ if(window.innerWidth>860) close(); });
+  })();
+  </script>
+  <script>(function(){var el=document.getElementById('cpyear');if(el){var s=2026,n=new Date().getFullYear();el.textContent=(n>s)?(s+'–'+n):(''+s);}})();</script>
+</body>
+</html>

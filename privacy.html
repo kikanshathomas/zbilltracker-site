@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zombie Bill Tracker | Privacy Policy</title>
+<meta name="description" content="Privacy Policy for Zombie Bill Tracker by Ubersoft. The app keeps your data on your device — no accounts, no servers, no tracking.">
+<meta name="robots" content="index, follow">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:image" content="https://zbilltracker.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zbilltracker.com/assets/img/og.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0e0e10; --bg-soft:#1a1a1d; --card:#1a1a1d;
+    --line:#2a2a2e; --line2:#3a3a40;
+    --text:#f0f0f2; --text-dim:#9a9aa0; --text-faint:#7a7a80;
+    --sans:'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --r:4px; --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--sans); font-weight:300;
+    line-height:1.55; -webkit-font-smoothing:antialiased;
+    text-transform:uppercase; letter-spacing:0.02em; overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  h1,h2,h3{font-family:var(--sans); font-weight:700; letter-spacing:-0.02em; line-height:1.08}
+  .eyebrow{font-size:11px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint)}
+
+  /* nav (matches the site) */
+  nav{position:sticky; top:0; z-index:50; background:rgba(14,14,16,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line)}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; max-width:var(--maxw); margin:0 auto; padding:15px 24px}
+  .brand{font-size:18px; font-weight:700; letter-spacing:-0.02em; color:var(--text)}
+  .brand b{color:var(--text-dim); font-weight:400}
+  .nav-r{display:flex; align-items:center; gap:26px}
+  .nav-r a{font-size:13px; font-weight:500; color:var(--text-dim); transition:.15s}
+  .nav-r a:hover{color:var(--text)}
+  .nav-btn{background:var(--text); color:var(--bg) !important; padding:9px 18px; border-radius:var(--r); font-weight:600; font-size:12px; transition:.15s}
+  .nav-btn:hover{opacity:.85}
+  /* hamburger toggle — hidden on desktop, shown under 860px */
+  .nav-toggle{display:none; flex-direction:column; justify-content:center; align-items:center; gap:4px; width:40px; height:40px; padding:0; background:transparent; border:1px solid var(--line2); border-radius:var(--r); cursor:pointer; -webkit-tap-highlight-color:transparent}
+  .nav-toggle span{display:block; width:17px; height:1.5px; background:var(--text); transition:transform .22s ease, opacity .22s ease}
+  .nav-toggle.open span:nth-child(1){transform:translateY(5.5px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-5.5px) rotate(-45deg)}
+
+  /* page header */
+  .legal-head{padding:clamp(48px,7vw,84px) 0 clamp(28px,4vw,40px); border-bottom:1px solid var(--line)}
+  .legal-head .eyebrow{display:block; margin-bottom:16px}
+  .legal-head h1{font-size:clamp(34px,5.5vw,60px); font-weight:800; letter-spacing:-0.03em}
+  .legal-head .meta{margin-top:16px; font-size:12px; font-weight:500; letter-spacing:.08em; color:var(--text-faint)}
+
+  /* legal body — prose in normal case for readability */
+  .legal{max-width:760px; margin:0 auto; padding:clamp(40px,6vw,64px) 0 80px; text-transform:none; letter-spacing:0}
+  .legal .lede{font-size:17px; color:var(--text); font-weight:400; line-height:1.6}
+  .legal .lede b{font-weight:600}
+  .legal .summary{
+    margin:26px 0 8px; padding:22px 24px; background:var(--bg-soft);
+    border:1px solid var(--line); border-radius:var(--r);
+  }
+  .legal .summary .st{
+    text-transform:uppercase; letter-spacing:.16em; font-size:11px; font-weight:600;
+    color:var(--text-faint); margin-bottom:14px;
+  }
+  .legal .summary ul{list-style:none; display:flex; flex-direction:column; gap:11px}
+  .legal .summary li{display:flex; gap:12px; align-items:flex-start; font-size:15px; color:var(--text-dim)}
+  .legal .summary li b{color:var(--text); font-weight:600}
+  .legal .summary .tick{flex:0 0 auto; width:20px; height:20px; border-radius:var(--r); background:rgba(255,255,255,.07); border:1px solid var(--line); display:grid; place-items:center; margin-top:1px}
+  .legal .summary .tick svg{width:11px; height:11px; stroke:var(--text); fill:none; stroke-width:2.4; stroke-linecap:round; stroke-linejoin:round}
+
+  .legal h2{
+    text-transform:uppercase; letter-spacing:.04em; font-size:14px; font-weight:700; color:var(--text);
+    margin:40px 0 14px; padding-top:24px; border-top:1px solid var(--line);
+    display:flex; gap:12px; align-items:baseline;
+  }
+  .legal h2 .n{font-size:11px; color:var(--text-faint); font-weight:600; letter-spacing:.1em; font-variant-numeric:tabular-nums}
+  .legal p{font-size:15px; color:var(--text-dim); line-height:1.72; margin-bottom:14px}
+  .legal p b, .legal li b{color:var(--text); font-weight:600}
+  .legal ul.body-list{margin:0 0 14px; padding-left:0; list-style:none; display:flex; flex-direction:column; gap:10px}
+  .legal ul.body-list li{font-size:15px; color:var(--text-dim); line-height:1.65; padding-left:18px; position:relative}
+  .legal ul.body-list li::before{content:""; position:absolute; left:2px; top:9px; width:5px; height:5px; border-radius:50%; background:var(--text-faint)}
+  .legal a.link{color:var(--text); text-decoration:underline; text-underline-offset:2px; text-decoration-color:var(--line2)}
+  .legal a.link:hover{text-decoration-color:var(--text-dim)}
+  .legal .note{font-size:13px; color:var(--text-faint); font-style:italic; margin-top:6px}
+
+  /* footer */
+  footer{padding:54px 0 38px; border-top:1px solid var(--line)}
+  .foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px}
+  .foot-brand .brand{font-size:18px}
+  .foot-brand p{color:var(--text-dim); font-weight:300; font-size:12px; margin-top:14px; max-width:24em; letter-spacing:.02em}
+  .foot-col h4{font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint); margin-bottom:14px}
+  .foot-col a{display:block; color:var(--text-dim); font-size:13px; font-weight:400; padding:5px 0; transition:.15s}
+  .foot-col a:hover{color:var(--text)}
+  @media(max-width:860px){ .foot-grid{grid-template-columns:1fr 1fr} }
+  @media(max-width:520px){ .foot-grid{grid-template-columns:1fr} }
+  .foot-legal{border-top:1px solid var(--line); margin-top:38px; padding-top:22px; font-size:11px; color:var(--text-faint); line-height:1.7; text-transform:uppercase; letter-spacing:0.04em}
+  .foot-legal a{color:var(--text-dim); text-decoration:underline; text-decoration-color:var(--line2); text-underline-offset:2px}
+  .foot-legal a:hover{color:var(--text)}
+
+  @media(max-width:860px){
+    .nav-toggle{display:flex}
+    .nav-r .nav-btn{display:none}
+    .nav-r{
+      position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; align-items:stretch; gap:0;
+      background:rgba(14,14,16,.98); backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+      max-height:0; overflow:hidden; transition:max-height .28s ease;
+    }
+    .nav-r.open{max-height:340px}
+    .nav-r a{padding:15px 24px; font-size:14px; color:var(--text); border-top:1px solid var(--line)}
+    .nav-r a:first-child{border-top:0}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/">CAMP<b> · LOG</b></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-r" id="navMenu">
+      <a href="/#features">Features</a>
+      <a href="/#benefits">Why it's different</a>
+      <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+      <a class="nav-btn" href="download.html">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<header class="legal-head">
+  <div class="wrap">
+    <span class="eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <!-- EFFECTIVE DATE — update both the datetime and the visible text below whenever you change any policy wording. This is the single source of truth for the date. -->
+    <div class="meta">Effective date: <time datetime="2026-06-05">June 5, 2026</time></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="legal">
+
+    <p class="lede">Zombie Bill Tracker (the "app") is built and published by Ubersoft ("we," "us," "our"). This policy explains how the app handles your information. <b>The short version: your data stays on your device, and we don't collect it.</b></p>
+
+    <div class="summary">
+      <div class="st">In plain terms</div>
+      <ul>
+        <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>No account.</b> No sign-up, no login, no profile.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>No servers.</b> Your bills, amounts, dates, and notes live only on your device.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>No tracking.</b> No analytics, no advertising, no third-party trackers.</span></li>
+        <li><span class="tick"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span><b>Nothing reaches us.</b> We can't see your information, because it never leaves your device.</span></li>
+      </ul>
+    </div>
+
+    <h2><span class="n">01</span> Information the app stores on your device</h2>
+    <p>The app lets you record bills and related details — names, amounts, due dates, categories, payment history, and your preferences such as language, currency, and theme. All of this is stored locally on your device using the device's own storage. It is not transmitted to us or to anyone else.</p>
+
+    <h2><span class="n">02</span> Information we collect</h2>
+    <p>We do not collect, receive, or store any personal or financial information about you. Because the app has no account system and no server component, we have no technical means of accessing the data you enter.</p>
+
+    <h2><span class="n">03</span> Backups and exports</h2>
+    <p>The app lets you export your data as a backup file. That file is created on your device at your request and saved to a location you choose. We do not receive a copy. If you later move, share, or store that file somewhere else, it is handled under the terms of whatever service or location you select.</p>
+
+    <h2><span class="n">04</span> Analytics and advertising</h2>
+    <p>The app contains no analytics, no advertising, and no third-party tracking technologies. We do not build a profile of you, and the app does not use advertising identifiers.</p>
+
+    <h2><span class="n">05</span> Purchases</h2>
+    <p>Zombie Bill Tracker is a one-time paid app. Your purchase is processed by Google Play, not by us — we never see or store your payment details. Google's handling of your purchase and account information is governed by Google's own privacy policy, available at <a class="link" href="https://policies.google.com/privacy">policies.google.com/privacy</a>.</p>
+
+    <h2><span class="n">06</span> Permissions</h2>
+    <p>The app requests only what it needs to work on your device:</p>
+    <ul class="body-list">
+      <li><b>Notifications</b> (optional): if you turn on bill reminders, the app schedules local notifications on your device. They are generated on the device and are not routed through any server.</li>
+      <li><b>Storage</b> (where applicable): used only to let you save or load a backup file that you create.</li>
+    </ul>
+
+    <h2><span class="n">07</span> Children's privacy</h2>
+    <p>The app is not directed to children under 13 (or the equivalent minimum age in your region), and we do not knowingly collect information from children. Because the app collects no information at all, no personal information from any user — child or adult — is gathered by us.</p>
+
+    <h2><span class="n">08</span> Your choices and rights</h2>
+    <p>Since we hold no data about you, there is nothing for us to access, correct, or delete on our side. You remain in full control of the information on your device: you can edit or delete any entry in the app, clear the app's data from your device settings, or uninstall the app to remove everything. Depending on where you live — for example under the GDPR or CCPA/CPRA — you may have rights regarding personal data a company holds about you. We hold none.</p>
+
+    <h2><span class="n">09</span> Data security</h2>
+    <p>Your information stays on your device, so its security depends largely on your device's own protections. We recommend keeping your device locked and its software up to date. No method of storage is perfectly secure, but because nothing is transmitted to us, there is no central database of your information for anyone to breach.</p>
+
+    <h2><span class="n">10</span> Third-party services</h2>
+    <p>The app is distributed through Google Play and uses Google Play to process payment. Apart from that, the app does not send your information to any third party.</p>
+
+    <h2><span class="n">11</span> Changes to this policy</h2>
+    <p>We may update this policy from time to time. If we make material changes, we'll update the effective date above and post the new version at zbilltracker.com/privacy. Continuing to use the app after an update means you accept the revised policy.</p>
+
+    <h2><span class="n">12</span> Contact</h2>
+    <!-- TODO: set your real support address -->
+    <p>Questions about this policy? Reach us at <a class="link" href="mailto:support@zbilltracker.com">support@zbilltracker.com</a>.</p>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/">CAMP<b> · LOG</b></a>
+        <p>The bill tracker you'll actually open. Pay your bills, keep your camp alive.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="/#features">Features</a>
+        <a href="/#benefits">Why it's different</a>
+        <a href="/#reviews">Reviews</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@zbilltracker.com">Support</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get the app</h4>
+        <a href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener">Google Play</a>
+        <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+      </div>
+    </div>
+    <p class="foot-legal">
+      Zombie Bill Tracker is a bill-tracking app and does not provide financial advice.
+      Google Play and the Google Play logo are trademarks of Google LLC.<br>© <span id="cpyear">2026</span> <a href="https://ubersoft.pro" target="_blank" rel="noopener">Ubersoft</a>. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+  <script>
+  // Mobile nav: hamburger toggle for the collapsible menu.
+  (function(){
+    var t=document.getElementById('navToggle'), m=document.getElementById('navMenu');
+    if(!t||!m) return;
+    function close(){t.classList.remove('open');m.classList.remove('open');t.setAttribute('aria-expanded','false');}
+    t.addEventListener('click', function(e){
+      e.stopPropagation();
+      var open=m.classList.toggle('open');
+      t.classList.toggle('open', open);
+      t.setAttribute('aria-expanded', open?'true':'false');
+    });
+    m.querySelectorAll('a').forEach(function(a){a.addEventListener('click', close);});
+    document.addEventListener('click', function(e){
+      if(m.classList.contains('open') && !m.contains(e.target) && !t.contains(e.target)) close();
+    });
+    window.addEventListener('resize', function(){ if(window.innerWidth>860) close(); });
+  })();
+  </script>
+  <script>(function(){var el=document.getElementById('cpyear');if(el){var s=2026,n=new Date().getFullYear();el.textContent=(n>s)?(s+'–'+n):(''+s);}})();</script>
+</body>
+</html>

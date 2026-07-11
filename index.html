@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zombie Bill Tracker | Keep Your Bills Alive</title>
+<meta name="description" content="Zombie Bill Tracker turns every bill into a survivor in your camp. Pay on time and they live; miss it and they turn. Loans, story log, 8 languages. $3.99, one-time, no subscription, fully offline.">
+<meta property="og:title" content="Zombie Bill Tracker">
+<meta property="og:description" content="Keep your bills alive. The bill tracker you'll actually open.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zbilltracker.com">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:image" content="https://zbilltracker.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://zbilltracker.com/assets/img/og.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Zombie Bill Tracker",
+  "operatingSystem": "Android",
+  "applicationCategory": "FinanceApplication",
+  "offers": { "@type": "Offer", "price": "3.99", "priceCurrency": "USD" },
+  "publisher": { "@type": "Organization", "name": "Ubersoft", "url": "https://ubersoft.pro" },
+  "url": "https://zbilltracker.com",
+  "downloadUrl": "https://play.google.com/store/apps/details?id=com.zbilltracker.app"
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* App dark tokens (matched to the app's styles.css) */
+    --bg:#0e0e10; --bg-soft:#1a1a1d; --card:#1a1a1d;
+    --line:#2a2a2e; --line2:#3a3a40;
+    --text:#f0f0f2; --text-dim:#9a9aa0; --text-faint:#7a7a80;
+    --sans:'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --r:4px; --maxw:1120px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  /* The app's signature: Outfit, uppercase, 0.02em tracking */
+  body{
+    background:var(--bg); color:var(--text); font-family:var(--sans); font-weight:300;
+    line-height:1.55; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    text-transform:uppercase; letter-spacing:0.02em; overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none}
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px}
+  h1,h2,h3{font-family:var(--sans); font-weight:700; letter-spacing:-0.02em; line-height:1.06}
+  .num{font-weight:700; letter-spacing:-0.02em; font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:11px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint)}
+
+  /* announcement */
+  .announce{background:var(--bg-soft); border-bottom:1px solid var(--line); text-align:center; padding:9px 16px; font-size:11px; font-weight:500; letter-spacing:0.12em; color:var(--text-dim)}
+  .announce b{color:var(--text); font-weight:600}
+
+  /* nav */
+  nav{position:sticky; top:0; z-index:50; background:rgba(14,14,16,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); position:sticky}
+  .nav-in{display:flex; align-items:center; justify-content:space-between; max-width:var(--maxw); margin:0 auto; padding:15px 24px; position:relative}
+  .brand{font-size:18px; font-weight:700; letter-spacing:-0.02em; color:var(--text)}
+  .brand b{color:var(--text-dim); font-weight:400}
+  .nav-r{display:flex; align-items:center; gap:26px}
+  .nav-r a{font-size:13px; font-weight:500; color:var(--text-dim); transition:.15s}
+  .nav-r a:hover{color:var(--text)}
+  .nav-btn{background:var(--text); color:var(--bg) !important; padding:9px 18px; border-radius:var(--r); font-weight:600; font-size:12px; transition:.15s}
+  .nav-btn:hover{opacity:.85}
+  /* Hamburger toggle — hidden on desktop, shown on mobile */
+  .nav-toggle{display:none; flex-direction:column; justify-content:center; gap:5px; width:42px; height:42px; padding:0 9px; border:0; background:none; cursor:pointer; -webkit-tap-highlight-color:transparent}
+  .nav-toggle span{display:block; height:2px; width:100%; background:var(--text); border-radius:2px; transition:transform .2s ease, opacity .2s ease}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+  /* hero (flat, like the app) */
+  .hero{padding:clamp(56px,8vw,104px) 0 clamp(44px,6vw,76px); text-align:center}
+  .hero .eyebrow{display:inline-block; margin-bottom:20px}
+  .app-icon{border-radius:22%; border:1px solid var(--line); box-shadow:0 10px 34px rgba(0,0,0,.45)}
+  .hero-icon{display:block; margin:0 auto 22px; width:96px; height:96px}
+  .hero h1{font-size:clamp(42px,7vw,84px); font-weight:800; letter-spacing:-0.03em; max-width:15ch; margin:0 auto}
+  .hero h1 .a{color:#ffffff}
+  .hero h1.dimbase{color:#cfccd0}
+  .hero .lede{font-size:clamp(15px,1.6vw,18px); font-weight:300; color:var(--text-dim); max-width:34em; margin:22px auto 0; letter-spacing:0.01em}
+  .badges{display:flex; gap:14px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:30px}
+  /* Official "Get it on Google Play" badge — asset at assets/img/google-play-badge.png */
+  .gp-badge{display:inline-block; transition:opacity .15s}
+  .gp-badge:hover{opacity:.85}
+  .gp-badge img{height:54px; width:auto; display:block}
+  .trust-strip{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:22px; font-size:11px; font-weight:500; letter-spacing:.1em; color:var(--text-faint)}
+  .trust-strip span{display:inline-flex; align-items:center; gap:7px}
+  .trust-strip span::before{content:""; width:4px; height:4px; border-radius:50%; background:var(--text-faint)}
+
+  /* phone (app-style screen; flat with a soft shadow for depth) */
+  .phone{width:248px; border-radius:30px; background:#0e0e10; padding:9px; border:1px solid var(--line2); box-shadow:0 30px 70px -30px rgba(0,0,0,.9); position:relative; flex:0 0 auto}
+  .phone::before{content:""; position:absolute; top:16px; left:50%; transform:translateX(-50%); width:70px; height:5px; background:#000; border-radius:99px; z-index:3}
+  .screen{background:#0e0e10; border-radius:23px; overflow:hidden; padding:30px 0 12px}
+  /* Image screens: real screenshots fill the phone frame (no fake status-bar padding). */
+  .screen.shot{padding:0; background:none; border-radius:0; overflow:visible}
+  /* Screenshot phones: drop the heavy bezel/notch — keep only a thin grey line frame. */
+  .phone:has(.screen.shot){width:230px; padding:0; background:none; border:0; border-radius:0; box-shadow:none; overflow:visible}
+  .phone:has(.screen.shot)::before{display:none}
+  /* Bordered frame so the dark screenshots separate from the dark page bg
+     instead of bleeding into it. Hairline edge + rounded corners read as a
+     phone screen; the soft shadow lifts it off the background. */
+  .screen.shot img{display:block; width:100%; height:auto; border-radius:20px; border:1px solid var(--line2); box-shadow:0 16px 44px -22px rgba(0,0,0,.85)}
+  /* Fallback for browsers without :has() — JS adds .phone-shot on load. */
+  .phone.phone-shot{width:230px; padding:0; background:none; border:0; border-radius:0; box-shadow:none; overflow:visible}
+  .phone.phone-shot::before{display:none}
+  /* Clickable screenshots -> lightbox */
+  .shot-link{display:block; padding:0; margin:0; border:0; background:none; cursor:pointer; width:100%; border-radius:0; -webkit-tap-highlight-color:transparent}
+  .shot-link:focus-visible{outline:none}
+  .shot-link:focus-visible img{opacity:.88}
+  .shot-link img{transition:opacity .2s ease}
+  .shot-link:hover img{opacity:.88}
+  .lightbox{position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; padding:32px; background:rgba(8,8,9,.92); backdrop-filter:blur(4px); cursor:zoom-out}
+  .lightbox.open{display:flex}
+  .lightbox img{max-width:min(92vw,420px); max-height:90vh; width:auto; height:auto; border-radius:14px; border:1px solid var(--line2); box-shadow:0 40px 90px -30px rgba(0,0,0,.9); cursor:default}
+  .lightbox-close{position:absolute; top:18px; right:22px; width:40px; height:40px; border:0; background:none; color:var(--text-dim); font-size:30px; line-height:1; cursor:pointer; border-radius:var(--r)}
+  .lightbox-close:hover{color:var(--text)}
+  @media (prefers-reduced-motion:no-preference){.lightbox img{animation:lbpop .2s ease}}
+  @keyframes lbpop{from{transform:scale(.97); opacity:0} to{transform:scale(1); opacity:1}}
+  .scr-head{display:flex; align-items:flex-start; justify-content:space-between; padding:6px 16px 12px}
+  .scr-mark{font-size:14px; font-weight:700; letter-spacing:-0.02em; color:var(--text)}
+  .scr-mark b{color:var(--text-dim); font-weight:400}
+  .scr-day{font-size:9px; font-weight:600; letter-spacing:.1em; color:var(--text-faint); padding-top:4px}
+  /* App's real status palette — scoped to the phone screen only, so the site
+     chrome stays greyscale while the previews read as genuine app screenshots. */
+  .screen{--ov:#f87171; --ovb:#2a1313; --up:#fbbf24; --upb:#2a1f0a; --pd:#4ade80; --pdb:#0e2418}
+  /* status banner */
+  .scr-status{display:flex; align-items:center; gap:7px; margin:0 16px 10px; padding:8px 10px; background:var(--bg-soft); border:1px solid #1f1f23; border-left:2px solid var(--pd); border-radius:var(--r); font-size:9.5px; color:var(--text-dim); line-height:1.35}
+  .scr-status.warn{border-left-color:var(--up)}
+  .scr-status.crit{border-left-color:var(--ov); background:#1d1416}
+  .scr-status .dot{width:5px; height:5px; border-radius:50%; background:var(--pd); flex:0 0 auto}
+  .scr-status.warn .dot{background:var(--up)} .scr-status.crit .dot{background:var(--ov)}
+  .scr-status b{color:var(--text); font-weight:600}
+  /* level card */
+  .scr-lvl{margin:0 16px 10px; padding:10px 12px; background:var(--bg-soft); border:1px solid #1f1f23; border-radius:var(--r)}
+  .scr-lvl-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:8px}
+  .scr-lvl-id{display:flex; align-items:center; gap:9px}
+  .scr-lvl-n{font-size:19px; font-weight:700; letter-spacing:-.03em; color:var(--text); line-height:1; min-width:18px; text-align:center}
+  .scr-lvl-t{font-size:10px; font-weight:600; color:var(--text)}
+  .scr-lvl-p{font-size:8px; color:var(--text-faint); margin-top:1px}
+  .scr-lvl-xp{font-size:8px; color:var(--text-dim); letter-spacing:.04em; font-variant-numeric:tabular-nums}
+  .scr-xpbar{height:3px; background:var(--line); border-radius:99px; overflow:hidden}
+  .scr-xpbar i{display:block; height:100%; background:var(--pd); border-radius:99px}
+  /* section head */
+  .scr-sect{display:flex; align-items:baseline; justify-content:space-between; padding:6px 16px 4px}
+  .scr-sect h4{font-size:10px; font-weight:400; color:var(--text-dim)}
+  .scr-sect .c{font-size:8px; color:var(--text-faint); font-variant-numeric:tabular-nums}
+  /* survivor row */
+  .surv{display:grid; grid-template-columns:42px 1fr auto; gap:10px; align-items:center; padding:9px 16px; border-top:1px solid #1f1f23}
+  .surv.dead{opacity:.5}
+  .surv.dead .nm{text-decoration:line-through; text-decoration-color:var(--text-faint); color:var(--text-dim)}
+  .pf{width:42px; height:42px; border-radius:var(--r); background:var(--bg-soft); border:1px solid var(--line); overflow:hidden; display:grid; place-items:center; font-size:14px; font-weight:600; letter-spacing:.02em; text-transform:uppercase; color:var(--text-dim); line-height:1}
+  .nm{font-size:11.5px; font-weight:600; letter-spacing:.005em; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .rl{font-size:9.5px; font-weight:300; color:var(--text-dim); margin-top:2px; letter-spacing:.02em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+  .tr{font-size:8.5px; color:var(--text-faint); margin-top:2px; letter-spacing:.02em}
+  .tr .sep{margin:0 4px; color:#3a3a40}
+  .tr.warn{color:var(--up); font-weight:600} .tr.crit{color:var(--ov); font-weight:700}
+  .rt{display:flex; flex-direction:column; align-items:flex-end; gap:3px}
+  .am{font-size:13px; font-weight:700; letter-spacing:-.01em; color:var(--text); font-variant-numeric:tabular-nums; white-space:nowrap}
+  .surv.dead .am{color:var(--text-faint)}
+  .badge{font-size:7.5px; font-weight:700; letter-spacing:.05em; padding:2px 6px; border-radius:3px; text-transform:uppercase; white-space:nowrap}
+  .b-safe{color:var(--pd); background:var(--pdb)}
+  .b-warn{color:var(--up); background:var(--upb)}
+  .b-over{color:var(--ov); background:var(--ovb)}
+  .b-dead{color:var(--text-faint); background:var(--bg-soft); border:1px solid var(--line)}
+  /* loan bars */
+  .lbar{height:4px; border-radius:99px; background:var(--line); margin:7px 0 0; overflow:hidden}
+  .lbar i{display:block; height:100%; border-radius:99px}
+  .loanrem{font-size:9px; color:var(--text-dim); margin-top:5px; font-variant-numeric:tabular-nums}
+  .loanrem b{font-weight:700; color:var(--text)}
+  /* story log */
+  .logrow{display:grid; grid-template-columns:36px 1fr; gap:9px; align-items:baseline; padding:9px 16px; border-top:1px solid #1f1f23}
+  .logrow .d{font-size:8px; font-weight:600; letter-spacing:.08em; color:var(--text-faint)}
+  .logrow .x{font-size:10px; font-weight:300; color:#cfcdc6; line-height:1.5; letter-spacing:.005em}
+  .logrow.arrival{background:var(--pdb); border-top:none; border-left:2px solid var(--pd); margin:5px 10px; padding:9px 10px; border-radius:var(--r)}
+  .logrow.arrival .d{color:var(--pd)} .logrow.arrival .x{color:var(--text); font-weight:500}
+  .logrow.shaken .x{color:var(--up)} .logrow.shaken .d{color:var(--up)}
+  .logrow.turned{background:var(--ovb); border-top:none; border-left:2px solid var(--ov); margin:5px 10px; padding:9px 10px; border-radius:var(--r)}
+  .logrow.turned .x{color:var(--ov); font-weight:600; font-style:italic} .logrow.turned .d{color:var(--ov)}
+  .logrow.wander{display:block; border-top:none; border-left:2px solid var(--text-faint); margin:5px 10px; padding:9px 10px; border-radius:var(--r); background:rgba(127,127,127,.05)}
+  .logrow.wander .wlbl{font-size:7.5px; font-weight:800; letter-spacing:.16em; color:var(--text-faint)}
+  .logrow.wander .x{color:var(--text-dim); font-style:italic; margin-top:4px}
+  .logrow.gold{display:block; border-top:none; margin:7px 10px; padding:11px 12px; border-radius:var(--r); background:linear-gradient(135deg,#2a2210,#3a2f15); border-left:3px solid #d4af37}
+  .logrow.gold .glbl{font-size:7.5px; font-weight:800; letter-spacing:.16em; color:#d4af37}
+  .logrow.gold .x{color:#f4e4a8; font-style:italic; margin-top:5px; line-height:1.45}
+  /* insights */
+  .ins-cards{display:grid; grid-template-columns:1fr 1fr; gap:6px; padding:2px 16px 10px}
+  .ins-card{background:var(--bg-soft); border:1px solid #1f1f23; border-radius:var(--r); padding:9px 10px}
+  .ins-card .k{font-size:8px; color:var(--text-dim); margin-bottom:4px; letter-spacing:.02em}
+  .ins-card .v{font-size:16px; font-weight:700; letter-spacing:-.02em; color:var(--text); line-height:1; font-variant-numeric:tabular-nums}
+  .ins-card .v small{font-size:9px; color:var(--text-faint); font-weight:400}
+  .ins-card .v.ok{color:var(--pd)}
+  .ins-blk{margin:0 16px 8px}
+  .ins-blk h5{font-size:9px; font-weight:700; color:var(--text); letter-spacing:.02em; margin:6px 0 8px}
+  .catrow{display:grid; grid-template-columns:46px 1fr auto; gap:8px; align-items:center; padding:5px 0; font-size:9px; font-weight:400; color:#cfcdc6}
+  .cbar{height:5px; border-radius:99px; background:var(--bg); border:1px solid var(--line); overflow:hidden}
+  .cbar i{display:block; height:100%; background:var(--text)}
+  .catrow .ca{font-size:8.5px; font-weight:600; color:var(--text-dim); font-variant-numeric:tabular-nums; min-width:34px; text-align:right}
+  .mrow{display:grid; grid-template-columns:32px 1fr auto; gap:8px; align-items:center; padding:5px 0; font-size:9px; color:var(--text-dim)}
+  .mbar{height:6px; border-radius:99px; background:var(--bg); border:1px solid var(--line); overflow:hidden}
+  .mbar i{display:block; height:100%; background:var(--pd)}
+  .mrow .ma{font-size:8.5px; font-weight:600; color:var(--text-dim); font-variant-numeric:tabular-nums; min-width:38px; text-align:right}
+
+  /* stats band */
+  .stats{border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-soft)}
+  .stats-in{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line)}
+  .stat{background:var(--bg-soft); padding:36px 20px 32px; text-align:center}
+  .stat .ico{width:24px; height:24px; margin:0 auto 16px; color:var(--text-faint); transition:filter .2s ease}
+  .stat .ico svg{width:100%; height:100%; stroke:currentColor; fill:none; stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round}
+  .stat:hover .ico{filter:brightness(1.18)}
+  .stat .n{font-size:clamp(30px,4vw,44px); font-weight:800; letter-spacing:-0.03em; color:var(--text); font-variant-numeric:tabular-nums; line-height:1}
+  .stat .n .a{color:var(--text-faint); font-weight:700}
+  .stat .k{font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--text-dim); margin-top:10px}
+
+  /* sections */
+  section{padding:clamp(64px,9vw,112px) 0}
+  .sec-title{text-align:center; max-width:40rem; margin:0 auto clamp(46px,7vw,70px)}
+  .sec-title h2{font-size:clamp(30px,4.4vw,52px); margin-top:14px}
+  .sec-title p{color:var(--text-dim); font-weight:300; margin-top:14px; font-size:16px}
+
+  /* feature rows */
+  .feature{display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,6vw,80px); align-items:center}
+  .feature + .feature{margin-top:clamp(60px,9vw,104px)}
+  .feature.flip .ftext{order:2}
+  .ftext .eyebrow{display:block; margin-bottom:14px}
+  .ftext h2{font-size:clamp(26px,3.4vw,40px)}
+  .ftext p{color:var(--text-dim); font-weight:300; font-size:15px; margin-top:14px; max-width:28em}
+  .fphone{display:flex; justify-content:center}
+
+  /* benefits grid */
+  .ben-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .ben{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:24px 22px; transition:.15s}
+  .ben:hover{border-color:var(--line2)}
+  .ben .ic{width:40px; height:40px; border-radius:var(--r); background:rgba(255,255,255,.06); border:1px solid var(--line); display:grid; place-items:center; margin-bottom:16px; color:var(--text-dim); transition:filter .15s ease}
+  .ben .ic svg{width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round}
+  .ben:hover .ic{filter:brightness(1.12)}
+  .ben h3{font-size:17px; font-weight:700}
+  .ben p{color:var(--text-dim); font-weight:300; font-size:13px; margin-top:8px}
+
+  /* testimonials */
+  .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .quote{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:24px 22px}
+  .quote .stars{color:#f5b50a; letter-spacing:3px; font-size:13px}
+  .quote .stars .e{color:var(--text-faint)}
+  .quote p{font-size:14px; font-weight:300; color:var(--text); margin:13px 0 18px; line-height:1.55}
+  .quote .who{display:flex; align-items:center; gap:11px}
+  .quote .av{width:34px; height:34px; border-radius:50%; background:var(--line); color:var(--text-dim); display:grid; place-items:center; font-weight:600; font-size:12px; letter-spacing:.02em; text-transform:uppercase; line-height:1}
+  .quote .who .nmx{font-size:10px; font-weight:600; letter-spacing:.08em; color:var(--text-faint)}
+
+  /* download band */
+  .download{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center}
+  .download h2{font-size:clamp(32px,5vw,58px); letter-spacing:-0.03em; max-width:14ch; margin:0 auto}
+  .download p{color:var(--text-dim); font-weight:300; margin-top:16px; font-size:16px}
+
+  /* footer */
+  footer{padding:54px 0 38px; border-top:1px solid var(--line)}
+  .foot-grid{display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:32px}
+  .foot-brand .brand{font-size:18px}
+  .foot-brand p{color:var(--text-dim); font-weight:300; font-size:12px; margin-top:14px; max-width:24em; letter-spacing:.02em}
+  .foot-col h4{font-size:10px; font-weight:600; letter-spacing:0.16em; color:var(--text-faint); margin-bottom:14px}
+  .foot-col a{display:block; color:var(--text-dim); font-size:13px; font-weight:400; padding:5px 0; transition:.15s}
+  .foot-col a:hover{color:var(--text)}
+  .foot-legal{border-top:1px solid var(--line); margin-top:38px; padding-top:22px; font-size:11px; color:var(--text-faint); line-height:1.7; text-transform:uppercase; letter-spacing:0.04em}
+  .foot-legal a{color:var(--text-dim); text-decoration:underline; text-decoration-color:var(--line2); text-underline-offset:2px}
+  .foot-legal a:hover{color:var(--text)}
+
+  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1; transform:none}
+
+  @media(max-width:860px){
+    .stats-in{grid-template-columns:1fr 1fr}
+    .feature{grid-template-columns:1fr; gap:34px}
+    .feature .fphone{order:-1 !important}
+    .feature.flip .ftext{order:0}
+    .ben-grid{grid-template-columns:1fr 1fr}
+    .quotes{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .nav-toggle{display:flex}
+    /* Links collapse into a dropdown panel toggled by the hamburger */
+    .nav-r{position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:stretch; gap:0;
+           background:rgba(14,14,16,.97); backdrop-filter:blur(12px); border-bottom:1px solid var(--line);
+           padding:6px 0; display:none}
+    .nav-r.open{display:flex}
+    .nav-r a{padding:13px 24px; font-size:15px}
+    .nav-r a:not(.nav-btn):hover{background:var(--bg-soft)}
+    /* No persistent Get-the-app button on mobile */
+    .nav-btn{display:none}
+  }
+  @media(max-width:520px){ .ben-grid{grid-template-columns:1fr} .foot-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<div class="announce">Now tracking loans &amp; debt payoff · <b>$3.99 one-time</b> · no subscription, no ads</div>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="/">CAMP<b> · LOG</b></a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-r" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#benefits">Why it's different</a>
+      <a href="#reviews">Reviews</a>
+      <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+      <a class="nav-btn" href="download.html">Get the app</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <img class="app-icon hero-icon reveal in" src="/assets/img/app-icon.png" alt="Zombie Bill Tracker app icon" width="96" height="96">
+    <span class="eyebrow reveal in">Zombie Bill Tracker</span>
+    <h1 class="dimbase reveal in">Keep your bills <span class="a">alive.</span></h1>
+    <p class="lede reveal in">The bill tracker you'll actually open. Every bill becomes a survivor in your camp — pay on time and they live, miss it and they turn.</p>
+    <div class="badges reveal in" id="get">
+      <!-- TODO: Google Play listing URL + official Play badge image before launch -->
+      <!-- Official Google Play badge: download hi-res localized asset from the badge generator (developer.android.com/distribute/marketing-tools) and save as assets/img/google-play-badge.png -->
+      <a class="gp-badge" href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener"><img src="assets/img/google-play-badge.png" alt="Get it on Google Play" height="54"></a>
+    </div>
+    <div class="trust-strip reveal in"><span>No account</span><span>Fully offline</span><span>Pay once</span></div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap" style="padding:0">
+    <div class="stats-in">
+      <div class="stat reveal"><div class="ico" style="color:#0A84FF"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div><div class="n">8</div><div class="k">Languages</div></div>
+      <div class="stat reveal"><div class="ico" style="color:#d4af37"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><circle cx="7" cy="7" r="1.3"/></svg></div><div class="n"><span class="a">$</span>3.99</div><div class="k">One-time</div></div>
+      <div class="stat reveal"><div class="ico" style="color:#4ade80"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><path d="M4 4l16 16"/></svg></div><div class="n">0</div><div class="k">Ads &amp; trackers</div></div>
+      <div class="stat reveal"><div class="ico" style="color:#4ade80"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div class="n">100<span class="a">%</span></div><div class="k">Offline &amp; private</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="features">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <span class="eyebrow">What's inside</span>
+      <h2>A full ledger, with a pulse.</h2>
+      <p>Ordinary bill-tracking underneath — due dates, schedules, history, insights. The camp is just why you keep coming back.</p>
+    </div>
+
+    <div class="feature reveal">
+      <div class="ftext">
+        <span class="eyebrow">The roster</span>
+        <h2>Every bill is a survivor.</h2>
+        <p>Each one gets a name, a face, and a job around camp. Read the whole month at a glance — who's safe, who's due soon, who's slipping.</p>
+      </div>
+      <div class="fphone">
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_01.png" aria-label="Enlarge Zombie Bill Tracker screenshot 1"><img src="/assets/img/Screenshot_01.png" alt="Zombie Bill Tracker screenshot 1" loading="lazy" width="230" height="498"></button></div></div>
+      </div>
+    </div>
+
+    <div class="feature flip reveal">
+      <div class="ftext">
+        <span class="eyebrow">Reminders</span>
+        <h2>Never miss a due date.</h2>
+        <p>Stay ahead of every bill and the camp holds. Fall behind and the infection spreads — a deadline you'll feel, not ignore.</p>
+      </div>
+      <div class="fphone">
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_02.png" aria-label="Enlarge Zombie Bill Tracker screenshot 2"><img src="/assets/img/Screenshot_02.png" alt="Zombie Bill Tracker screenshot 2" loading="lazy" width="230" height="498"></button></div></div>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="ftext">
+        <span class="eyebrow">Loans</span>
+        <h2>Watch debt drop to zero.</h2>
+        <p>Track any loan down to nothing with a payoff bar. Watch the remaining balance fall every time you pay — survivor by survivor, month by month.</p>
+      </div>
+      <div class="fphone">
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_03.png" aria-label="Enlarge Zombie Bill Tracker screenshot 3"><img src="/assets/img/Screenshot_03.png" alt="Zombie Bill Tracker screenshot 3" loading="lazy" width="230" height="498"></button></div></div>
+      </div>
+    </div>
+
+    <div class="feature flip reveal">
+      <div class="ftext">
+        <span class="eyebrow">The story log</span>
+        <h2>The camp writes its own history.</h2>
+        <p>Arrivals, close calls, milestones, and the ones who didn't make it. Pay off a loan and that survivor moves on to another community.</p>
+      </div>
+      <div class="fphone">
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_04.png" aria-label="Enlarge Zombie Bill Tracker screenshot 4"><img src="/assets/img/Screenshot_04.png" alt="Zombie Bill Tracker screenshot 4" loading="lazy" width="230" height="498"></button></div></div>
+      </div>
+    </div>
+
+    <div class="feature reveal">
+      <div class="ftext">
+        <span class="eyebrow">Insights</span>
+        <h2>See where the money goes.</h2>
+        <p>Clear monthly totals and category breakdowns, plus a calendar of everything that's due — no spreadsheets required.</p>
+      </div>
+      <div class="fphone">
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_05.png" aria-label="Enlarge Zombie Bill Tracker screenshot 5"><img src="/assets/img/Screenshot_05.png" alt="Zombie Bill Tracker screenshot 5" loading="lazy" width="230" height="498"></button></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="benefits" style="background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <span class="eyebrow">Why it's different</span>
+      <h2>Built to respect you and your money.</h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben reveal"><div class="ic" style="color:#4ade80; background:rgba(74,222,128,.12); border-color:rgba(74,222,128,.30)"><svg viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Private by default</h3><p>Everything stays on your device. No cloud, no account, nothing to leak.</p></div>
+      <div class="ben reveal"><div class="ic" style="color:#d4af37; background:rgba(212,175,55,.14); border-color:rgba(212,175,55,.32)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M9.5 10.5h4a1.5 1.5 0 0 1 0 3h-3a1.5 1.5 0 0 0 0 3h4"/></svg></div><h3>Pay once</h3><p>$3.99, one time. No subscription, no in-app purchases, ever.</p></div>
+      <div class="ben reveal"><div class="ic" style="color:#4ade80; background:rgba(74,222,128,.12); border-color:rgba(74,222,128,.30)"><svg viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><path d="M4 4l16 16"/></svg></div><h3>No ads, no tracking</h3><p>No analytics, no data collection, no noise. Just your bills.</p></div>
+      <div class="ben reveal"><div class="ic" style="color:#0A84FF; background:rgba(10,132,255,.13); border-color:rgba(10,132,255,.32)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z"/></svg></div><h3>Eight languages</h3><p>English, French, Italian, German, Spanish, Japanese, Korean, Chinese.</p></div>
+      <div class="ben reveal"><div class="ic" style="color:#fbbf24; background:rgba(251,191,36,.13); border-color:rgba(251,191,36,.30)"><svg viewBox="0 0 24 24"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3 6.6 6.6 0 0 0 21 12.8z"/></svg></div><h3>Dark mode</h3><p>The zombie camp stays dark by design. Switch to the plain bill tracker and a light theme is there when you want it.</p></div>
+      <div class="ben reveal"><div class="ic" style="color:#b4b1a9; background:rgba(180,177,169,.10); border-color:rgba(180,177,169,.28)"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="10" rx="5"/><circle cx="8" cy="12" r="3"/></svg></div><h3>Plain mode</h3><p>Switch the zombies off for a straight bill ledger any time you like.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <span class="eyebrow">Reviews</span>
+      <h2>What people are saying.</h2>
+    </div>
+    <!-- TODO: replace with real Google Play reviews after launch -->
+    <div class="quotes reveal">
+      <div class="quote"><div class="stars">★★★★★</div><p>"First bill tracker I've kept past a week. I open it just to check on everyone."</p><div class="who"><div class="av">A</div><div class="nmx">Placeholder review</div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"Paid off my car loan watching the bar fill up. Weirdly motivating."</p><div class="who"><div class="av">M</div><div class="nmx">Placeholder review</div></div></div>
+      <div class="quote"><div class="stars">★★★★★</div><p>"It's a normal bill tracker underneath. The zombies are just why I don't ignore it."</p><div class="who"><div class="av">J</div><div class="nmx">Placeholder review</div></div></div>
+    </div>
+    <p class="reviews-note" style="margin-top:22px; text-align:center; font-size:12px; line-height:1.55; color:var(--text-faint)">Heads up: Zombie Bill Tracker is just launching, so these are placeholder reviews for now. Real reviews will appear here once players start leaving them.</p>
+  </div>
+</section>
+
+<section class="download">
+  <div class="wrap">
+    <span class="eyebrow reveal">Download</span>
+    <h2 class="reveal" style="margin-top:16px">Keep Your Bills Alive.</h2>
+    <p class="reveal">$3.99, one-time. No subscription. No ads. No account.</p>
+    <div class="badges reveal">
+      <!-- Official Google Play badge: download hi-res localized asset from the badge generator (developer.android.com/distribute/marketing-tools) and save as assets/img/google-play-badge.png -->
+      <a class="gp-badge" href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener"><img src="assets/img/google-play-badge.png" alt="Get it on Google Play" height="54"></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="/">CAMP<b> · LOG</b></a>
+        <p>The bill tracker you'll actually open. Pay your bills, keep your camp alive.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Product</h4>
+        <a href="/#features">Features</a>
+        <a href="/#benefits">Why it's different</a>
+        <a href="/#reviews">Reviews</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="mailto:support@zbilltracker.com">Support</a>
+      </div>
+      <div class="foot-col">
+        <h4>Get the app</h4>
+        <a href="https://play.google.com/store/apps/details?id=com.zbilltracker.app" target="_blank" rel="noopener">Google Play</a>
+        <a href="demo.html" target="_blank" rel="noopener">Demo</a>
+      </div>
+    </div>
+    <p class="foot-legal">
+      Zombie Bill Tracker is a bill-tracking app and does not provide financial advice.
+      Google Play and the Google Play logo are trademarks of Google LLC.<br>© <span id="cpyear">2026</span> <a href="https://ubersoft.pro" target="_blank" rel="noopener">Ubersoft</a>. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1, rootMargin:'0px 0px -6% 0px'});
+  document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
+  // Placeholder reviews: gold stars at random counts (3–5) until real reviews are added.
+  document.querySelectorAll('.quote .stars').forEach(function(el){
+    var r = 3 + Math.floor(Math.random()*3);
+    el.innerHTML = '★'.repeat(r) + (r<5 ? '<span class="e">'+'★'.repeat(5-r)+'</span>' : '');
+  });
+  // Avatars mirror the in-app system: 2-letter initials + a color seeded from identity.
+  // (Palette + hash ported verbatim from the app so the look matches exactly.)
+  var AV_PALETTE = [
+    {bg:'#7d4f3a',fg:'#f5e9d4'},{bg:'#8b6f47',fg:'#f5e9d4'},{bg:'#5d6b3a',fg:'#f0eeda'},
+    {bg:'#3e5a4a',fg:'#e6efe1'},{bg:'#4a5a6b',fg:'#e0e7ec'},{bg:'#7a4a4f',fg:'#f0d9d9'},
+    {bg:'#9c7339',fg:'#f5e9d4'},{bg:'#5e4a3a',fg:'#e8dac4'},{bg:'#6b5a4a',fg:'#ebdfc8'},
+    {bg:'#4f6b5a',fg:'#dfeae0'},{bg:'#7a6b4a',fg:'#efe5cc'},{bg:'#5a4a5e',fg:'#e2dde6'},
+    {bg:'#3a4a5a',fg:'#dde4ec'},{bg:'#8a4a3a',fg:'#f0d9cf'},{bg:'#4a5a5a',fg:'#dee5e5'},
+    {bg:'#6b4a5a',fg:'#ebdee5'},{bg:'#3a3a3a',fg:'#dadada'},{bg:'#7a5a4a',fg:'#eddacd'}
+  ];
+  function strHash(s){var h=0;for(var i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return Math.abs(h);}
+  function initialsFromName(name){
+    if(!name) return '?';
+    var cleaned = String(name).replace(/"[^"]*"/g,'').replace(/'[^']*'/g,'').trim();
+    var parts = cleaned.split(/\s+/).filter(function(p){return p.length;});
+    if(parts.length===0) return '?';
+    if(parts.length===1) return parts[0][0].toUpperCase();
+    return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
+  }
+  // Internal placeholder names (never shown — only used to derive initials + color,
+  // exactly like the app derives an avatar from a survivor's name).
+  var AV_NAMES = ['Marcus Vega','Dana Cole','June Park','Theo Ramsey','Priya Shah',
+    'Liam Brooks','Nora Estevez','Kofi Mensah','Sasha Lind','Quinn Avery','Rosa Kim','Wes Calloway'];
+  (function(){
+    var pool = AV_NAMES.slice();
+    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
+    document.querySelectorAll('.quote .av').forEach(function(el,k){
+      var name = pool[k % pool.length];
+      var c = AV_PALETTE[strHash(name) % AV_PALETTE.length];
+      el.textContent = initialsFromName(name);
+      el.style.background = c.bg;
+      el.style.color = c.fg;
+    });
+  })();
+  // Survivor portraits in the phone previews use the app's colored-initials
+  // fallback: a square seeded from the name (same palette + hash as the app).
+  document.querySelectorAll('.pf[data-name]').forEach(function(el){
+    var name = el.getAttribute('data-name');
+    var c = AV_PALETTE[strHash(name) % AV_PALETTE.length];
+    el.textContent = initialsFromName(name);
+    el.style.background = c.bg;
+    el.style.color = c.fg;
+  });
+</script>
+  <script>(function(){var el=document.getElementById('cpyear');if(el){var s=2026,n=new Date().getFullYear();el.textContent=(n>s)?(s+'–'+n):(''+s);}})();</script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Screenshot preview">
+    <button class="lightbox-close" type="button" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="">
+  </div>
+  <script>(function(){
+    var lb=document.getElementById('lightbox'),img=document.getElementById('lightboxImg'),last=null;
+    function open(src,alt){img.src=src;img.alt=alt||'';lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');img.src='';document.body.style.overflow='';if(last){last.focus();last=null;}}
+    document.querySelectorAll('.screen.shot').forEach(function(sc){var p=sc.closest('.phone');if(p)p.classList.add('phone-shot');});
+    document.querySelectorAll('.shot-link').forEach(function(btn){
+      btn.addEventListener('click',function(){last=btn;var i=btn.querySelector('img');open(btn.getAttribute('data-full'),i?i.getAttribute('alt'):'');});
+    });
+    lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lightbox-close'))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+    // Hamburger menu
+    var tg=document.getElementById('navToggle'),lk=document.getElementById('navLinks');
+    if(tg&&lk){
+      tg.addEventListener('click',function(){var open=lk.classList.toggle('open');tg.setAttribute('aria-expanded',open?'true':'false');});
+      lk.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){lk.classList.remove('open');tg.setAttribute('aria-expanded','false');});});
+    }
+  })();</script>
+</body>
+</html>
