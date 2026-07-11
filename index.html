@@ -17,6 +17,10 @@
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://zbilltracker.com/assets/img/og.png">
+<meta name="twitter:title" content="Zombie Bill Tracker">
+<meta name="twitter:description" content="Keep your bills alive. The bill tracker you'll actually open.">
+<link rel="canonical" href="https://zbilltracker.com/">
+<meta name="theme-color" content="#0e0e10">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -28,6 +32,26 @@
   "publisher": { "@type": "Organization", "name": "Ubersoft", "url": "https://ubersoft.pro" },
   "url": "https://zbilltracker.com",
   "downloadUrl": "https://play.google.com/store/apps/details?id=com.zbilltracker.app"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is my financial data private?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — everything stays on your device. There is no account, no cloud, and no tracking, and the app works fully offline. You can export a backup file any time to keep or move your data." } },
+    { "@type": "Question", "name": "What happens if I miss a bill?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The survivor tied to that bill gets hurt, then infected — keep ignoring it and they turn. Paying the bill saves them. It is a deadline you feel, but your real records and amounts are never affected." } },
+    { "@type": "Question", "name": "Can I turn the zombies off?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Plain mode switches the whole app to a straight bill ledger, and a light theme is available there too." } },
+    { "@type": "Question", "name": "Is it really pay-once?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes — $3.99 one time on Google Play. No subscription, no in-app purchases, no ads." } },
+    { "@type": "Question", "name": "Does it work offline?",
+      "acceptedAnswer": { "@type": "Answer", "text": "100%. The app never connects to a server and no account is needed — reminders, loans, insights, and the story log all run entirely on your device." } },
+    { "@type": "Question", "name": "Which languages are supported?",
+      "acceptedAnswer": { "@type": "Answer", "text": "English, French, Italian, German, Spanish, Japanese, Korean, and Chinese — eight in total, switchable in the app." } }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -254,6 +278,18 @@
   .quote .av{width:34px; height:34px; border-radius:50%; background:var(--line); color:var(--text-dim); display:grid; place-items:center; font-weight:600; font-size:12px; letter-spacing:.02em; text-transform:uppercase; line-height:1}
   .quote .who .nmx{font-size:10px; font-weight:600; letter-spacing:.08em; color:var(--text-faint)}
 
+  /* faq */
+  .faq-list{max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:10px}
+  .faq{background:var(--card); border:1px solid var(--line); border-radius:var(--r); transition:border-color .15s}
+  .faq:hover{border-color:var(--line2)}
+  .faq summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:18px 20px; font-size:14px; font-weight:600; color:var(--text); -webkit-tap-highlight-color:transparent}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq .fx{flex:0 0 auto; width:18px; height:18px; position:relative}
+  .faq .fx::before,.faq .fx::after{content:""; position:absolute; left:2px; right:2px; top:8px; height:2px; background:var(--text-dim); border-radius:2px; transition:transform .18s ease}
+  .faq .fx::after{transform:rotate(90deg)}
+  .faq[open] .fx::after{transform:rotate(0)}
+  .faq p{padding:0 20px 18px; font-size:13.5px; font-weight:300; color:var(--text-dim); line-height:1.7; letter-spacing:.02em}
+
   /* download band */
   .download{background:var(--bg-soft); border-top:1px solid var(--line); border-bottom:1px solid var(--line); text-align:center}
   .download h2{font-size:clamp(32px,5vw,58px); letter-spacing:-0.03em; max-width:14ch; margin:0 auto}
@@ -310,6 +346,7 @@
       <a href="#features">Features</a>
       <a href="#benefits">Why it's different</a>
       <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
       <a class="nav-btn" href="download.html">Get the app</a>
     </div>
   </div>
@@ -356,7 +393,7 @@
         <p>Each one gets a name, a face, and a job around camp. Read the whole month at a glance — who's safe, who's due soon, who's slipping.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_01.png" aria-label="Enlarge Zombie Bill Tracker screenshot 1"><img src="/assets/img/Screenshot_01.png" alt="Zombie Bill Tracker screenshot 1" loading="lazy" width="230" height="498"></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_01.webp" aria-label="Enlarge Zombie Bill Tracker screenshot 1"><picture><source srcset="/assets/img/Screenshot_01.webp" type="image/webp"><img src="/assets/img/Screenshot_01.png" alt="Zombie Bill Tracker screenshot 1" loading="lazy" width="230" height="498"></picture></button></div></div>
       </div>
     </div>
 
@@ -367,7 +404,7 @@
         <p>Stay ahead of every bill and the camp holds. Fall behind and the infection spreads — a deadline you'll feel, not ignore.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_02.png" aria-label="Enlarge Zombie Bill Tracker screenshot 2"><img src="/assets/img/Screenshot_02.png" alt="Zombie Bill Tracker screenshot 2" loading="lazy" width="230" height="498"></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_02.webp" aria-label="Enlarge Zombie Bill Tracker screenshot 2"><picture><source srcset="/assets/img/Screenshot_02.webp" type="image/webp"><img src="/assets/img/Screenshot_02.png" alt="Zombie Bill Tracker screenshot 2" loading="lazy" width="230" height="498"></picture></button></div></div>
       </div>
     </div>
 
@@ -378,7 +415,7 @@
         <p>Track any loan down to nothing with a payoff bar. Watch the remaining balance fall every time you pay — survivor by survivor, month by month.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_03.png" aria-label="Enlarge Zombie Bill Tracker screenshot 3"><img src="/assets/img/Screenshot_03.png" alt="Zombie Bill Tracker screenshot 3" loading="lazy" width="230" height="498"></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_03.webp" aria-label="Enlarge Zombie Bill Tracker screenshot 3"><picture><source srcset="/assets/img/Screenshot_03.webp" type="image/webp"><img src="/assets/img/Screenshot_03.png" alt="Zombie Bill Tracker screenshot 3" loading="lazy" width="230" height="498"></picture></button></div></div>
       </div>
     </div>
 
@@ -389,7 +426,7 @@
         <p>Arrivals, close calls, milestones, and the ones who didn't make it. Pay off a loan and that survivor moves on to another community.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_04.png" aria-label="Enlarge Zombie Bill Tracker screenshot 4"><img src="/assets/img/Screenshot_04.png" alt="Zombie Bill Tracker screenshot 4" loading="lazy" width="230" height="498"></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_04.webp" aria-label="Enlarge Zombie Bill Tracker screenshot 4"><picture><source srcset="/assets/img/Screenshot_04.webp" type="image/webp"><img src="/assets/img/Screenshot_04.png" alt="Zombie Bill Tracker screenshot 4" loading="lazy" width="230" height="498"></picture></button></div></div>
       </div>
     </div>
 
@@ -400,7 +437,7 @@
         <p>Clear monthly totals and category breakdowns, plus a calendar of everything that's due — no spreadsheets required.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_05.png" aria-label="Enlarge Zombie Bill Tracker screenshot 5"><img src="/assets/img/Screenshot_05.png" alt="Zombie Bill Tracker screenshot 5" loading="lazy" width="230" height="498"></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/Screenshot_05.webp" aria-label="Enlarge Zombie Bill Tracker screenshot 5"><picture><source srcset="/assets/img/Screenshot_05.webp" type="image/webp"><img src="/assets/img/Screenshot_05.png" alt="Zombie Bill Tracker screenshot 5" loading="lazy" width="230" height="498"></picture></button></div></div>
       </div>
     </div>
 
@@ -440,6 +477,23 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-title reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, answered.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <details class="faq"><summary>Is my financial data private?<span class="fx" aria-hidden="true"></span></summary><p>Yes — everything stays on your device. There's no account, no cloud, and no tracking, and the app works fully offline. You can export a backup file any time to keep or move your data.</p></details>
+      <details class="faq"><summary>What happens if I miss a bill?<span class="fx" aria-hidden="true"></span></summary><p>The survivor tied to that bill gets hurt, then infected — keep ignoring it and they turn. Paying the bill saves them. It's a deadline you feel, but your real records and amounts are never affected.</p></details>
+      <details class="faq"><summary>Can I turn the zombies off?<span class="fx" aria-hidden="true"></span></summary><p>Yes. Plain mode switches the whole app to a straight bill ledger, and a light theme is available there too.</p></details>
+      <details class="faq"><summary>Is it really pay-once?<span class="fx" aria-hidden="true"></span></summary><p>Yes — $3.99 one time on Google Play. No subscription, no in-app purchases, no ads.</p></details>
+      <details class="faq"><summary>Does it work offline?<span class="fx" aria-hidden="true"></span></summary><p>100%. The app never connects to a server and no account is needed — reminders, loans, insights, and the story log all run entirely on your device.</p></details>
+      <details class="faq"><summary>Which languages are supported?<span class="fx" aria-hidden="true"></span></summary><p>English, French, Italian, German, Spanish, Japanese, Korean, and Chinese — eight in total, switchable in the app.</p></details>
+    </div>
+  </div>
+</section>
+
 <section class="download">
   <div class="wrap">
     <span class="eyebrow reveal">Download</span>
@@ -464,6 +518,7 @@
         <a href="/#features">Features</a>
         <a href="/#benefits">Why it's different</a>
         <a href="/#reviews">Reviews</a>
+        <a href="/#faq">FAQ</a>
       </div>
       <div class="foot-col">
         <h4>Company</h4>
