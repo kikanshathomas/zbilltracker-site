@@ -11,11 +11,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://zbilltracker.com/demo.html</loc>
-    <lastmod>2026-07-02</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://zbilltracker.com/privacy.html</loc>
     <lastmod>2026-07-02</lastmod>
     <priority>0.3</priority>

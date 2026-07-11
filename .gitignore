@@ -1,0 +1,11 @@
+# Deploy ignore for the zbilltracker_web GitHub Pages repo.
+# build.bat copies this file to zbilltracker_web\.gitignore.
+# The web demo still STAGES locally (kept for testing / easy re-publish),
+# but is NOT pushed to the public site — marketing pages only.
+demo.html
+assets/js/
+assets/css/
+assets/fonts/
+assets/portraits/
+assets/video/
+assets/game/
