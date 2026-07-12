@@ -268,16 +268,6 @@
   .ben h3{font-size:17px; font-weight:700}
   .ben p{color:var(--text-dim); font-weight:300; font-size:13px; margin-top:8px}
 
-  /* testimonials */
-  .quotes{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
-  .quote{background:var(--card); border:1px solid var(--line); border-radius:var(--r); padding:24px 22px}
-  .quote .stars{color:#f5b50a; letter-spacing:3px; font-size:13px}
-  .quote .stars .e{color:var(--text-faint)}
-  .quote p{font-size:14px; font-weight:300; color:var(--text); margin:13px 0 18px; line-height:1.55}
-  .quote .who{display:flex; align-items:center; gap:11px}
-  .quote .av{width:34px; height:34px; border-radius:50%; background:var(--line); color:var(--text-dim); display:grid; place-items:center; font-weight:600; font-size:12px; letter-spacing:.02em; text-transform:uppercase; line-height:1}
-  .quote .who .nmx{font-size:10px; font-weight:600; letter-spacing:.08em; color:var(--text-faint)}
-
   /* faq */
   .faq-list{max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:10px}
   .faq{background:var(--card); border:1px solid var(--line); border-radius:var(--r); transition:border-color .15s}
@@ -316,7 +306,6 @@
     .feature .fphone{order:-1 !important}
     .feature.flip .ftext{order:0}
     .ben-grid{grid-template-columns:1fr 1fr}
-    .quotes{grid-template-columns:1fr}
     .foot-grid{grid-template-columns:1fr 1fr}
     .nav-toggle{display:flex}
     /* Links collapse into a dropdown panel toggled by the hamburger */
@@ -345,7 +334,6 @@
     <div class="nav-r" id="navLinks">
       <a href="#features">Features</a>
       <a href="#benefits">Why it's different</a>
-      <a href="#reviews">Reviews</a>
       <a href="#faq">FAQ</a>
       <a class="nav-btn" href="download.html">Get the app</a>
     </div>
@@ -461,22 +449,6 @@
   </div>
 </section>
 
-<section id="reviews">
-  <div class="wrap">
-    <div class="sec-title reveal">
-      <span class="eyebrow">Reviews</span>
-      <h2>What people are saying.</h2>
-    </div>
-    <!-- TODO: replace with real Google Play reviews after launch -->
-    <div class="quotes reveal">
-      <div class="quote"><div class="stars">★★★★★</div><p>"First bill tracker I've kept past a week. I open it just to check on everyone."</p><div class="who"><div class="av">A</div><div class="nmx">Placeholder review</div></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><p>"Paid off my car loan watching the bar fill up. Weirdly motivating."</p><div class="who"><div class="av">M</div><div class="nmx">Placeholder review</div></div></div>
-      <div class="quote"><div class="stars">★★★★★</div><p>"It's a normal bill tracker underneath. The zombies are just why I don't ignore it."</p><div class="who"><div class="av">J</div><div class="nmx">Placeholder review</div></div></div>
-    </div>
-    <p class="reviews-note" style="margin-top:22px; text-align:center; font-size:12px; line-height:1.55; color:var(--text-faint)">Heads up: Zombie Bill Tracker is just launching, so these are placeholder reviews for now. Real reviews will appear here once players start leaving them.</p>
-  </div>
-</section>
-
 <section id="faq">
   <div class="wrap">
     <div class="sec-title reveal">
@@ -517,7 +489,6 @@
         <h4>Product</h4>
         <a href="/#features">Features</a>
         <a href="/#benefits">Why it's different</a>
-        <a href="/#reviews">Reviews</a>
         <a href="/#faq">FAQ</a>
       </div>
       <div class="foot-col">
@@ -540,11 +511,6 @@
 <script>
   const io = new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.1, rootMargin:'0px 0px -6% 0px'});
   document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
-  // Placeholder reviews: gold stars at random counts (3–5) until real reviews are added.
-  document.querySelectorAll('.quote .stars').forEach(function(el){
-    var r = 3 + Math.floor(Math.random()*3);
-    el.innerHTML = '★'.repeat(r) + (r<5 ? '<span class="e">'+'★'.repeat(5-r)+'</span>' : '');
-  });
   // Avatars mirror the in-app system: 2-letter initials + a color seeded from identity.
   // (Palette + hash ported verbatim from the app so the look matches exactly.)
   var AV_PALETTE = [
@@ -564,21 +530,6 @@
     if(parts.length===1) return parts[0][0].toUpperCase();
     return (parts[0][0] + parts[parts.length-1][0]).toUpperCase();
   }
-  // Internal placeholder names (never shown — only used to derive initials + color,
-  // exactly like the app derives an avatar from a survivor's name).
-  var AV_NAMES = ['Marcus Vega','Dana Cole','June Park','Theo Ramsey','Priya Shah',
-    'Liam Brooks','Nora Estevez','Kofi Mensah','Sasha Lind','Quinn Avery','Rosa Kim','Wes Calloway'];
-  (function(){
-    var pool = AV_NAMES.slice();
-    for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=pool[i];pool[i]=pool[j];pool[j]=t;}
-    document.querySelectorAll('.quote .av').forEach(function(el,k){
-      var name = pool[k % pool.length];
-      var c = AV_PALETTE[strHash(name) % AV_PALETTE.length];
-      el.textContent = initialsFromName(name);
-      el.style.background = c.bg;
-      el.style.color = c.fg;
-    });
-  })();
   // Survivor portraits in the phone previews use the app's colored-initials
   // fallback: a square seeded from the name (same palette + hash as the app).
   document.querySelectorAll('.pf[data-name]').forEach(function(el){
