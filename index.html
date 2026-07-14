@@ -131,7 +131,7 @@
   /* Bordered frame so the dark screenshots separate from the dark page bg
      instead of bleeding into it. Hairline edge + rounded corners read as a
      phone screen; the soft shadow lifts it off the background. */
-  .screen.shot img{display:block; width:100%; height:auto; border-radius:20px; border:1px solid var(--line2); box-shadow:0 16px 44px -22px rgba(0,0,0,.85)}
+  .screen.shot img{display:block; width:100%; aspect-ratio:9/16; object-fit:cover; object-position:top center; border-radius:20px; border:1px solid var(--line2); box-shadow:0 16px 44px -22px rgba(0,0,0,.85)}
   /* Fallback for browsers without :has() — JS adds .phone-shot on load. */
   .phone.phone-shot{width:230px; padding:0; background:none; border:0; border-radius:0; box-shadow:none; overflow:visible}
   .phone.phone-shot::before{display:none}
@@ -297,8 +297,15 @@
   .foot-legal a{color:var(--text-dim); text-decoration:underline; text-decoration-color:var(--line2); text-underline-offset:2px}
   .foot-legal a:hover{color:var(--text)}
 
-  .reveal{opacity:0; transform:translateY(20px); transition:opacity .6s cubic-bezier(.2,.7,.2,1), transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal{opacity:0; transform:translateY(22px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1)}
   .reveal.in{opacity:1; transform:none}
+  /* staggered slide-in cascade for grid children — modern motion rhythm */
+  .stats-in .stat.reveal:nth-child(2),.ben-grid .ben.reveal:nth-child(2){transition-delay:.07s}
+  .stats-in .stat.reveal:nth-child(3),.ben-grid .ben.reveal:nth-child(3){transition-delay:.14s}
+  .stats-in .stat.reveal:nth-child(4),.ben-grid .ben.reveal:nth-child(4){transition-delay:.21s}
+  .ben-grid .ben.reveal:nth-child(5){transition-delay:.28s}
+  .ben-grid .ben.reveal:nth-child(6){transition-delay:.35s}
+  @media(prefers-reduced-motion:reduce){.reveal{transition:none; transform:none; opacity:1}}
 
   @media(max-width:860px){
     .stats-in{grid-template-columns:1fr 1fr}
@@ -409,12 +416,12 @@
 
     <div class="feature flip reveal">
       <div class="ftext">
-        <span class="eyebrow">The calendar</span>
+        <span class="eyebrow">Home base</span>
         <h2>Never miss a due date.</h2>
-        <p>Switch to the tracker view for a full month at a glance, every bill marked — overdue, due, paid. Reminders land before anything slips, whichever side of the app you live in.</p>
+        <p>Open to the whole month at a glance — what's due, what's overdue, what's already paid, and the total hanging over you. Reminders land before anything slips.</p>
       </div>
       <div class="fphone">
-        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/shot-calendar.webp" aria-label="Enlarge screenshot: the bill calendar"><picture><source srcset="/assets/img/shot-calendar.webp" type="image/webp"><img src="/assets/img/shot-calendar.png" alt="Month calendar with bills marked overdue, due, and paid" loading="lazy" width="230" height="409"></picture></button></div></div>
+        <div class="phone"><div class="screen shot"><button class="shot-link" type="button" data-full="/assets/img/shot-home.webp" aria-label="Enlarge screenshot: the home screen"><picture><source srcset="/assets/img/shot-home.webp" type="image/webp"><img src="/assets/img/shot-home.png" alt="Home screen showing amount due this month, overdue and upcoming counts, and the bill list" loading="lazy" width="230" height="409"></picture></button></div></div>
       </div>
     </div>
 
