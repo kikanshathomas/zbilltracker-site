@@ -5,12 +5,11 @@ documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased] - 2026-10-20
+## [Unreleased] - 2026-10-21
 
 ### Added
 
-- `readme.md` describing the site, its page set, how changes ship and how to
-  verify the live site. Repository document only; not part of the site.
+- `readme.md` for the repository: page set, how changes ship, how to check the live site.
 - Privacy policy: a description of the on-device crash log, including what it
   records, that it is part of the phone's own backup and of the optional
   Documents backup file, and that it leaves the phone only through that backup
@@ -28,8 +27,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
-- The changelog file is now named `changelog.md` (lowercase), following the
-  company file naming rule.
+- The changelog file is now named `changelog.md` (lowercase).
 - Privacy policy effective date is now October 20, 2026.
 - Privacy policy: the Google backup is described as current and Apple or
   iCloud backup as future; section 11 is now titled
@@ -50,9 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   price. The price offer was removed from the homepage structured data.
 - Sitemap last-modified dates for the homepage, download page and privacy
   policy are now 2026-10-20.
-- The social share image (`og.png`), app icon and three screenshots were
-  recompressed losslessly (pixel-identical, same dimensions), from 1,159,872 to
-  1,104,777 bytes (about 5 percent).
+- The share image, app icon and three screenshots are 5% smaller and look the same.
 - Icon, store badge and social share images were recompressed losslessly
   (pixel-identical), reducing their combined size from 1,373,968 to 901,104
   bytes (about 34 percent).
