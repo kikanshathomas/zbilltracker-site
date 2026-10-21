@@ -48,7 +48,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
   price. The price offer was removed from the homepage structured data.
 - Sitemap last-modified dates for the homepage, download page and privacy
   policy are now 2026-10-20.
-- The share image, app icon and three screenshots are 5% smaller and look the same.
+- The share image and three screenshots are 5% smaller and look the same.
 - Icon, store badge and social share images were recompressed losslessly
   (pixel-identical), reducing their combined size from 1,373,968 to 901,104
   bytes (about 34 percent).
