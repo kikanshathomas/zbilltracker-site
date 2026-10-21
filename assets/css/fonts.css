@@ -1,0 +1,18 @@
+/* Outfit, self-hosted. ONE variable woff2, six weight declarations — which is
+   exactly what Google's font CSS API served: six @font-face blocks all pointing
+   at the SAME file, so the browser fetches it once and instances each weight
+   from it. Saving it under six names would have shipped 157 KB of byte-identical
+   duplicates. (No Google host is named anywhere in site/ on purpose — a grep for
+   one should come back empty and be believed.)
+
+   Latin subset only. The entire non-ASCII surface of this site is the em dash,
+   the middle dot and the copyright sign, all inside Google's `latin` range.
+
+   Vendored 2026-08-01 from the css2 API. Regenerate by re-fetching that URL;
+   do not hand-edit. */
+@font-face{font-family:'Outfit';font-style:normal;font-weight:300;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:400;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:500;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:600;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:700;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Outfit';font-style:normal;font-weight:800;font-display:swap;src:url('../fonts/outfit-variable.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
