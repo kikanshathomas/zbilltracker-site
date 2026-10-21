@@ -9,6 +9,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- `readme.md` describing the site, its page set, how changes ship and how to
+  verify the live site. Repository document only; not part of the site.
 - Privacy policy: a description of the on-device crash log, including what it
   records, that it is part of the phone's own backup and of the optional
   Documents backup file, and that it leaves the phone only through that backup
@@ -26,6 +28,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- The changelog file is now named `changelog.md` (lowercase), following the
+  company file naming rule.
 - Privacy policy effective date is now October 20, 2026.
 - Privacy policy: the Google backup is described as current and Apple or
   iCloud backup as future; section 11 is now titled
