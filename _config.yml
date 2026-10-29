@@ -1,0 +1,10 @@
+# Jekyll config for the GitHub Pages build of this static site.
+# No file here has front matter, so Jekyll copies every file byte-for-byte.
+# This config exists only to keep repo-internal files off the live site.
+exclude:
+  - CLAUDE.md
+  - .claude
+# Keep .md files without front matter as plain static files (no rendering).
+require_front_matter: true
+# No theme: otherwise GitHub Pages adds its default theme's assets/css/style.css.
+theme: null
