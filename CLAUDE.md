@@ -11,3 +11,4 @@ Sibling repos: `zbilltracker-dev` (app source) and `zbilltracker` (Capacitor And
 - Never push directly to the default branch, even though GitHub does not block it. Open a PR.
 - Nothing reaches production/live (punchi.tv, app store releases, live sites) without QA clearance in the ledger (kikanshathomas/ubersoft-company, company/audit/cleared.md) and Thomas's go.
 - Never commit secrets, keys or env files.
+- QA & Security owns every product's changelog (changelog.md / changelog.txt, including store release notes) and punchi.tv's What's New (punchi-site src/lib/whats-new.ts). Other departments do not edit them; QA updates them as its own PR when work ships.
