@@ -5,7 +5,7 @@ documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [Unreleased] - 2026-10-21
+## [Unreleased] - 2026-10-30
 
 ### Added
 
@@ -49,12 +49,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Sitemap last-modified dates for the homepage, download page and privacy
   policy are now 2026-10-20.
 - The share image and three screenshots are 5% smaller and look the same.
-- Icon, store badge and social share images were recompressed losslessly
-  (pixel-identical), reducing their combined size from 1,373,968 to 901,104
-  bytes (about 34 percent).
+- The store badge, browser and home-screen icons and the social share image
+  were recompressed losslessly (pixel-identical).
+- The app icon is now 512 x 512 pixels (was 256 x 256). The homepage and
+  download page offer it as WebP (`app-icon-208.webp`, `app-icon-512.webp`),
+  with `app-icon.png` as the fallback.
 
 ### Fixed
 
+- The homepage, download page, privacy policy, 404 page, sitemap and this
+  changelog are back to their reviewed 2026-10-20 versions. The repository had
+  been recreated from an older copy, which briefly put the 2026-10-01 privacy
+  policy, a hard-coded price and the unpinned GoatCounter script back on the
+  live site.
 - Privacy policy no longer says bill data is "never sent anywhere"; it now says
   bill data is never sent to GoatCounter or to Ubersoft, consistent with the
   device backup disclosure.
